@@ -9,7 +9,6 @@ import { aunthenticate, authorize } from "../middleware/auth";
 import {
   validateReqBody,
   validateReqParams,
-  validateReqQuery,
 } from "../middleware/validation";
 import {
   getUserQuerySchema,

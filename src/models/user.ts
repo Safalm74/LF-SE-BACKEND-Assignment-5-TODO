@@ -57,13 +57,14 @@ export function createUser(user: IUser) {
     permissions:getPermssionByRole(user.role)
   };
   users.push(req_user);
+  
   logger.info(`User Added: ${req_user.id}`);
+
   return req_user;
 }
 
 //function to read user by id
 export function getUserById(id: string) {
-  console.log('asdasd')
   return users.find(({ id: userId }) => {
     return userId === id;
   });
