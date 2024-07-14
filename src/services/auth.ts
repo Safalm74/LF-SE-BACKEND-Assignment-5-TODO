@@ -108,7 +108,7 @@ export async function refreshAccessToken(RefreshToken: string) { //JWT sign awai
     if (!existingRefreshToken){
       throw (new NotFoundError("Requested Token not found"));
     }
-
+    console.log("token: ",token[1],existingRefreshToken.token);
     if(existingRefreshToken.token !==token[1]){
       throw (new BadRequestError("Provided token doesnot match"));
     }

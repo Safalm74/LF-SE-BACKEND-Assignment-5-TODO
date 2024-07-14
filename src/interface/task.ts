@@ -4,8 +4,3 @@ export interface ITask{
     name:string;
     is_finished:boolean;
 }
-
-export interface IRefreshToken{
-    user_id:string;
-    token:string;
-}

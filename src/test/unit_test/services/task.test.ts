@@ -1,12 +1,8 @@
 import expect from "expect";
 import Sinon from "sinon";
-import * as UserService from "../../../services/user";
 import * as TaskService from "../../../services/task";
-import * as UserModel from "../../../models/user";
 import * as TaskModel from "../../../models/task";
 import { NotFoundError } from "../../../error/NotFoundError";
-import { IUser } from "../../../interface/user";
-import bcrypt from "bcrypt";
 import { BadRequestError } from "../../../error/BadRequestError";
 import { ITask } from "../../../interface/task";
 

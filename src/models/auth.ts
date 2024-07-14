@@ -1,4 +1,4 @@
-import { IRefreshToken } from "../interface/task";
+import { IRefreshToken } from "../interface/auth";
 
 let refreshTokens:IRefreshToken[]=[];
 
@@ -8,7 +8,11 @@ export function createRefreshToken(user_id: string,token:string) {
             user_id:user_id,
             token:token
         }
-    )}
+    )
+    
+    return token;
+  }
+    
 
 //function to get task on array (create)
 export function getTokenByUserId(user_id: string) {
