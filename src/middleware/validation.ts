@@ -9,6 +9,8 @@ export function validateReqQuery(schema:Schema){
         
         if (error){
             next(new BadRequestError(error.message));
+            
+            return;
         }
 
         req.query=value;
@@ -24,6 +26,8 @@ export function validateReqBody(schema:Schema){
         
         if (error){
             next(new BadRequestError(error.message));
+
+            return;
         }
 
         req.body=value;
@@ -39,6 +43,8 @@ export function validateReqParams(schema:Schema){
         
         if (error){
             next(new BadRequestError(error.message));
+    
+            return;
         }
 
         req.params=value;

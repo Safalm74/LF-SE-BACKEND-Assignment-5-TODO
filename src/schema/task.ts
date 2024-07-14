@@ -9,7 +9,7 @@ export const taskParamSchema=Joi.object(
     }
 );
 
-//Schema to create user
+//Schema to create task
 export const createTaskBodySchema=Joi.object(
     {
         name:Joi.string().required().messages(
@@ -24,17 +24,14 @@ export const createTaskBodySchema=Joi.object(
     }
 );
 
-//Schema to update user
+//Schema to update task
 export const updateTaskBodySchema=Joi.object(
     {
         name:Joi.string().required().messages(
             {
                 "any.required":"Name is required",
             }
-        ),
-        user_id: Joi.string().required().messages({
-            "number.base": "User ID must be a number",
-          })
+        )
     }
 ).options(
     {
@@ -42,11 +39,11 @@ export const updateTaskBodySchema=Joi.object(
     }
 );
 
-//Schema to delete user
+//Schema to delete task
 export const deleteTaskBodySchema=Joi.object(
     {
-        user_id: Joi.string().required().messages({
-            "number.base": "User ID must be a number",
+        task_id: Joi.string().required().messages({
+            "number.base": "task ID must be a number",
           })
     }
 ).options(

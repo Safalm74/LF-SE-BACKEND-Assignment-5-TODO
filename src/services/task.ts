@@ -4,7 +4,7 @@ import { ITask } from "../interface/task";
 import * as TaskHandlerModel from "../models/task";
 import loggerWithNameSpace from "../utils/logger";
 
-const logger = loggerWithNameSpace("Auth Service");
+const logger = loggerWithNameSpace("Task Service");
 
 //service to handle create task
 export function createTask(task: ITask, user_id: string) {

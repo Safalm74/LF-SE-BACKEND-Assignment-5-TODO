@@ -102,5 +102,6 @@ export function deleteTask(req: Request, res: Response, next: NextFunction) {
     });
   } catch (error) {
     next(error);
+    return;
   }
 }
