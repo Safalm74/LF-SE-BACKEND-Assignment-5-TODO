@@ -118,4 +118,6 @@ export function deleteAllTaskByUserId(user_id: string) {
   });
 
   logger.info('Tasks Deleted for user: ',user_id);
+
+  return (`Tasks Deleted for user: ${user_id}`);
 }
