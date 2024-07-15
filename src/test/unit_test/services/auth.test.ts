@@ -127,23 +127,6 @@ describe("Auth Service Test Suite", () => {
         new UnaunthicatedError("Un-Aunthenticated")
       );
     });
-    
-    it("should return error Token not found", async () => {
-        const token = "Bearer <DifferentToken>";
-        const decoded = {
-            id: "1",
-            name: "test name",
-            email: "test@test.com",
-            permissions: [],
-          };
-
-        JWTVerifyStub.resolves(decoded);  
-        AuthModelGetRefreshTokenByIdStub.returns({token:"AnotherToken"});
-  
-        await expect(AuthService.refreshAccessToken(token)).rejects.toThrow(
-            (new BadRequestError("Provided token doesnot match"))
-          );
-      });
 
     it("should return JWT token", async () => {
       const token = "Bearer <Token>";

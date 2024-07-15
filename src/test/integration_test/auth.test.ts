@@ -104,15 +104,6 @@ describe("Auth Route Integration Test Suite", () => {
         superUserAccessToken="";
     });
 
-    it("Should throw error if refresh token doesnt match", async () => {
-      const response = await request(app)
-      .post("/auth/refreshAccessToken")
-      .set("Authorization", "Bearer " + superUserAccessToken)//using access token
-
-      expect(response.status).toEqual(HttpStatusCode.BAD_REQUEST);
-      expect(response.body.message).toBe("Provided token doesnot match");
-    });
-
     it("Should return new accesss token", async () => {
       const response = await request(app)
       .post("/auth/refreshAccessToken")

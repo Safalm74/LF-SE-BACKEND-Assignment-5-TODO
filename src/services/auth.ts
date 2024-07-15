@@ -103,16 +103,6 @@ export async function refreshAccessToken(RefreshToken: string) { //JWT sign awai
       "password" | "role"
     >;
 
-    const existingRefreshToken=AuthModel.getTokenByUserId(isValidToken.id);
-
-    if (!existingRefreshToken){
-      throw (new NotFoundError("Requested Token not found"));
-    }
-   
-    if(existingRefreshToken.token !==token[1]){
-      throw (new BadRequestError("Provided token doesnot match"));
-    }
-
     //creating payload to generate new access token
     logger.info("creating payload");
 

@@ -139,22 +139,22 @@ describe("Task Route Integration Test Suite", () => {
     });
 
 
-    // it("should update task", async () => {
-    //   const user_id = 1; 
-    //   const task_id=1;
-    //   const taskDetailToUpdate = {
-    //     ...task,
-    //     name: "dance",
-    //     user_id:user_id
-    //   };
+    it("should update task", async () => {
+      const user_id = 1; 
+      const task_id=1;
+      const taskDetailToUpdate = {
+        ...task,
+        name: "dance",
+        user_id:user_id
+      };
 
-    //   const response = await request(app)
-    //     .put(`/user/${task_id}`)
-    //     .set("Authorization", "Bearer " + superUserAccessToken)
-    //     .send(taskDetailToUpdate );
+      const response = await request(app)
+        .put(`/user/${task_id}`)
+        .set("Authorization", "Bearer " + superUserAccessToken)
+        .send(taskDetailToUpdate );
 
-    //   expect(response.status).toStrictEqual(HttpStatusCode.OK);
-    // });
+      expect(response.status).toStrictEqual(HttpStatusCode.OK);
+    });
   });
 
   describe("DeleteTask API Test", () => {
