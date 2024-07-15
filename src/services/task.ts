@@ -68,6 +68,8 @@ export function updatedTask(id: string, updatedTask: ITask, user_id: string) {
 export function deleteTask(taskId: string, user_id: string) {
   logger.info('Attempting to delete task');
 
+  console.log("taskuserid: ",taskId,user_id)
+
   const data = TaskHandlerModel.getTaskById(user_id,taskId);
 
   if (!data) {
