@@ -7,7 +7,13 @@
     "test": "mocha --require ts-node/register 'src/test/unit_test/**/*.test.ts'",
     "test:integration": "mocha --require ts-node/register 'src/test/integration_test/**/*.test.ts'",
     "build": "tsc",
-    "tscInit": "tsc --init"
+    "tscInit": "tsc --init",
+    "knex":"knex --knexfile=./src/knexfile.ts",
+    "migrate:make":"npm run knex migrate:make --verbose",
+    "migrate":"npm run knex migrate:latest --verbose",
+    "rollback":"npm run knex migrate:rollback --verbose",
+    "seed:make":"npm run knex seed:make --verbose",
+    "seed:run":"npm run knex seed:run --verbose"
   },
   "author": "",
   "license": "ISC",
@@ -36,6 +42,7 @@
   },
   "dependencies": {
     "@types/bcrypt": "^5.0.2",
+    "@types/knex": "^0.16.1",
     "bcrypt": "^5.1.1",
     "cors": "^2.8.5",
     "express": "^4.19.2",
@@ -45,6 +52,7 @@
     "http-status-codes": "^2.3.0",
     "joi": "^17.13.3",
     "jsonwebtoken": "^9.0.2",
+    "knex": "^3.1.0",
     "pg": "^8.12.0",
     "winston": "^3.13.0"
   }

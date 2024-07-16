@@ -3,7 +3,7 @@ import express from "express";
 import * as TaskController from "../controllers/task";
 import { aunthenticate, authorize } from "../middleware/auth";
 import { validateReqBody, validateReqParams } from "../middleware/validation";
-import { createTaskBodySchema, deleteTaskBodySchema, taskParamSchema, updateTaskBodySchema } from "../schema/task";
+import { createTaskBodySchema, taskParamSchema, updateTaskBodySchema } from "../schema/task";
 
 //creating route
 const router = express();
@@ -53,7 +53,6 @@ router.put(
 router.delete(
   "/:id",
   validateReqParams(taskParamSchema),
-  validateReqBody(deleteTaskBodySchema),
   aunthenticate,
   authorize("task.delete"),
  TaskController.deleteTask

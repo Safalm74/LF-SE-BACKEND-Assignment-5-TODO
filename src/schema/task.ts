@@ -38,16 +38,3 @@ export const updateTaskBodySchema=Joi.object(
         stripUnknown:true,
     }
 );
-
-//Schema to delete task
-export const deleteTaskBodySchema=Joi.object(
-    {
-        task_id: Joi.string().required().messages({
-            "number.base": "task ID must be a number",
-          })
-    }
-).options(
-    {
-        stripUnknown:true,
-    }
-);

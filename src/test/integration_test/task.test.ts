@@ -10,7 +10,7 @@ import HttpStatusCode from "http-status-codes";
 import helmet from "helmet";
 import { ITask } from "../../interface/task";
 
-describe("Task Route Integration Test Suite", () => {
+describe.only("Task Route Integration Test Suite", () => {
   const task: ITask = {
     id: "1",
     user_id: "1",
@@ -101,7 +101,7 @@ describe("Task Route Integration Test Suite", () => {
     });
   });
 
-  describe("UpdateUser API Test", () => {
+  describe.only("UpdateTask API Test", () => {
     let superUserAccessToken: string;
 
     beforeEach(async () => {
@@ -139,22 +139,23 @@ describe("Task Route Integration Test Suite", () => {
     });
 
 
-    // it("should update task", async () => {
-    //   const user_id = 1; 
-    //   const task_id=1;
-    //   const taskDetailToUpdate = {
-    //     ...task,
-    //     name: "dance",
-    //     user_id:user_id
-    //   };
+    it("should update task", async () => {
+      const user_id = 1; 
+      const task_id=1;
+      const taskDetailToUpdate = {
+        ...task,
+        name: "dance",
+        user_id:user_id,
+        task_id:task_id
+      };
 
-    //   const response = await request(app)
-    //     .put(`/user/${task_id}`)
-    //     .set("Authorization", "Bearer " + superUserAccessToken)
-    //     .send(taskDetailToUpdate );
+      const response = await request(app)
+        .put(`/task/${task_id}`)
+        .set("Authorization", "Bearer " + superUserAccessToken)
+        .send(taskDetailToUpdate );
 
-    //   expect(response.status).toStrictEqual(HttpStatusCode.OK);
-    // });
+      expect(response.status).toStrictEqual(HttpStatusCode.OK);
+    });
   });
 
   describe("DeleteTask API Test", () => {
@@ -180,27 +181,31 @@ describe("Task Route Integration Test Suite", () => {
       superUserAccessToken = "";
     });
 
-    // it("should throw error when task is not in the system and status code 404", async () => {
-    //   const task_id = "1000";
-    //   const response = await request(app)
-    //     .delete(`/task/1`)
-    //     .set("Authorization", "Bearer " + superUserAccessToken)
-    //     .send({
-    //       name: "read book",
-    //       user_id: task_id,
-    //     });
+    it("should throw error when task is not in the system and status code 404", async () => {
+      const task_id = "1000";
+      const response = await request(app)
+        .delete(`/task/${task_id}`)
+        .set("Authorization", "Bearer " + superUserAccessToken)
+        .send({
+          name: "read book",
+          user_id: task_id,
+        });
 
-    //   expect(response.status).toEqual(HttpStatusCode.NOT_FOUND);
-    // });
+      expect(response.status).toEqual(HttpStatusCode.NOT_FOUND);
+    });
 
-    // it("should delete task", async () => {
-    //   const task_id = "1"; //new user has id 2
+    it("should delete task", async () => {
+      const task_id = "1";
 
-    //   const response = await request(app)
-    //     .delete(`/task/:${task_id}`)
-    //     .set("Authorization", "Bearer " + superUserAccessToken);
+      const response = await request(app)
+        .delete(`/task/${task_id}`)
+        .set("Authorization", "Bearer " + superUserAccessToken)
+        .send({
+          name: "read book",
+          user_id: task_id,
+        });;
 
-    //   expect(response.status).toStrictEqual(HttpStatusCode.NO_CONTENT);
-    // });
+      expect(response.status).toStrictEqual(HttpStatusCode.NO_CONTENT);
+    });
   });
 });
